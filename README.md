@@ -1,4 +1,4 @@
-# FYP_Aortic_Anatomy_CODE
+# Final Year Project: Aortic Anatomy in Neonates (MEng Biomedical Engineering)
 
 Code used in FYP Aortic Anatomy in Neonates
 
