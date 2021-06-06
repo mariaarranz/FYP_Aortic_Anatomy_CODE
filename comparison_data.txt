@@ -1,0 +1,47 @@
+--------------------------------------------------------------------------------
+  Aortic Root Diameter Comparison between Expected and Model Measurements 
+--------------------------------------------------------------------------------
+# PAIRED SAMPLE T-TEST: 
+
+T-value: 2.6834952461395707
+Degrees of Freedom: 25
+Type of tail: two-sided
+p-value: 0.012735052529773128
+95% Confidence Interval: [0.11 0.85]
+Cohen’s D: 0.41075072350501796
+Bayes Factor: 3.853
+Power: 0.5214502315598306
+
+# PEARSONS CORRELATION: 0.709396356451043
+
+--------------------------------------------------------------------------------
+  Ascending Aorta Diameter Comparison between Expected and Model Measurements 
+--------------------------------------------------------------------------------
+# PAIRED SAMPLE T-TEST: 
+
+T-value: 0.19869774586360062
+Degrees of Freedom: 25
+Type of tail: two-sided
+p-value: 0.844106247912482
+95% Confidence Interval: [-0.33  0.4 ]
+Cohen’s D: 0.02789398989158855
+Bayes Factor: 0.211
+Power: 0.05214822576982926
+
+# PEARSONS CORRELATION: 0.8192559007223019
+
+--------------------------------------------------------------------------------
+  Tranverse Aorta Diameter Comparison between Expected and Model Measurements 
+--------------------------------------------------------------------------------
+# PAIRED SAMPLE T-TEST: 
+
+T-value: 0.5255514181532994
+Degrees of Freedom: 25
+Type of tail: two-sided
+p-value: 0.603830684325863
+95% Confidence Interval: [-0.26  0.44]
+Cohen’s D: 0.0842383337715321
+Bayes Factor: 0.235
+Power: 0.06978530853351794
+
+# PEARSONS CORRELATION: 0.7051047087365533

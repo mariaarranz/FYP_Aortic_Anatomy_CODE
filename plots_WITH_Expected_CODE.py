@@ -30,19 +30,16 @@ dfTrsv = dfTrsv.drop(columns=['Unnamed: 6', 'Name Select'])
 ###########################################################################################################
 x = dfAo['Gestational Age (weeks)']
 y = dfAo['Ao. Root (mm)']
+y2 = dfAo['Exp. Ao. Root (mm)']
 
 plt.figure(1, figsize=(6, 5))
 
-ax = sns.scatterplot(x=x, y= y, data=dfAo, color=".2", style="Condition", s=20)
+ax = sns.scatterplot(x=x, y= y, data=dfAo, color=".2", style="Condition", s=20, legend=False)
+ax = sns.scatterplot(x=x, y= y2, data=dfAo, color="m", s=20, legend=False)
 plt.rcParams["font.family"] = "serif"
 
-plt.legend(loc='upper left')
-plt.legend(markerscale=0.7)
-plt.setp(ax.get_legend().get_texts(), fontsize='8') # for legend text
-plt.setp(ax.get_legend().get_title(), fontsize='8') # for legend title
-
 plt.title('Gestational Age vs. Aortic Root Diameter')
-plt.ylabel("Aortic Root Model Diameter (mm)")
+plt.ylabel("Aortic Root Diameter (mm)")
 plt.xlabel("Gestational Age (weeks)")
 
 # Set up grid, legend, and limits
@@ -64,18 +61,15 @@ plt.plot(x, line, color='black', linewidth=0.5)
 plt.plot(x, line+ci, 'k--', linewidth=0.5, )
 plt.fill_between(x, line-ci, line+ci, alpha=0.1)
 
-b = round(b, 3)
-m = round(m, 3)
-b = abs(b)
-plt.text(26,6,('y = '+ str(m)+'*x - ' +str(b)), fontsize=8)
+m, b = np.polyfit(x, y2, 1)
+line = m*x + b
+ci = 1.96 * np.std(y)/np.mean(y)
+plt.plot(x, line-ci, 'm--', linewidth=0.5)
+plt.plot(x, line, color='m', linewidth=0.5)
+plt.plot(x, line+ci, 'm--', linewidth=0.5, )
+plt.fill_between(x, line-ci, line+ci, alpha=0.1)
 
-# calculate Pearson's correlation
-corr, _ = pearsonr(x, y)
-corr = round(corr, 3)
-plt.text(26,5.8,('r='+ str(corr)), fontsize=8)
-print('Pearsons correlation: %.3f' % corr)
-
-plt.savefig('figures/GA-Ao.jpg', bbox_inches='tight')
+plt.savefig('figures/GA-Ao-ExpAo.jpg', bbox_inches='tight')
 plt.show()
 
 
@@ -84,18 +78,15 @@ plt.show()
 ###########################################################################################################
 x = dfAsc['Gestational Age (weeks)']
 y = dfAsc['Asc. Ao. (mm)']
+y2 = dfAsc['Exp. Asc. Ao. (mm)']
 
 plt.figure(2, figsize=(6, 5))
-ax = sns.scatterplot(x=x, y= y, data=dfAsc, color=".2", style="Condition", s=20)
+ax = sns.scatterplot(x=x, y= y, data=dfAsc, color=".2", style="Condition", s=20, legend=False)
+ax = sns.scatterplot(x=x, y= y2, data=dfAo, color="m", s=20, legend=False)
 plt.rcParams["font.family"] = "serif"
 
-plt.legend(loc='upper left')
-plt.legend(markerscale=0.7)
-plt.setp(ax.get_legend().get_texts(), fontsize='8') # for legend text
-plt.setp(ax.get_legend().get_title(), fontsize='8') # for legend title
-
 plt.title('Gestational Age vs. Ascending Aorta Diameter')
-plt.ylabel("Ascending Aorta Model Diameter (mm)")
+plt.ylabel("Ascending Aorta Diameter (mm)")
 plt.xlabel("Gestational Age (weeks)")
 
 # Set up grid, legend, and limits
@@ -117,18 +108,15 @@ plt.plot(x, line, color='black', linewidth=0.5)
 plt.plot(x, line+ci, 'k--', linewidth=0.5, )
 plt.fill_between(x, line-ci, line+ci, alpha=0.1)
 
-b = round(b, 3)
-m = round(m, 3)
-b = abs(b)
-plt.text(25.5,6.25,('y = '+ str(m)+'*x - ' +str(b)), fontsize=8)
+m, b = np.polyfit(x, y2, 1)
+line = m*x + b
+ci = 1.96 * np.std(y)/np.mean(y)
+plt.plot(x, line-ci, 'm--', linewidth=0.5)
+plt.plot(x, line, color='m', linewidth=0.5)
+plt.plot(x, line+ci, 'm--', linewidth=0.5, )
+plt.fill_between(x, line-ci, line+ci, alpha=0.1)
 
-# calculate Pearson's correlation
-corr, _ = pearsonr(x, y)
-corr = round(corr, 3)
-plt.text(25.5,6,('r='+ str(corr)), fontsize=8)
-print('Pearsons correlation: %.3f' % corr)
-
-plt.savefig('figures/GA-Asc.jpg', bbox_inches='tight')
+plt.savefig('figures/GA-Asc-Exp.jpg', bbox_inches='tight')
 plt.show()
 
 ###########################################################################################################
@@ -136,18 +124,15 @@ plt.show()
 ###########################################################################################################
 x = dfTrsv['Gestational Age (weeks)']
 y = dfTrsv['Transv. Ao. (mm)']
+y2 = dfTrsv['Exp. Transv. Ao. (mm)']
 
 plt.figure(3, figsize=(6, 5))
-ax = sns.scatterplot(x=x, y= y, data=dfTrsv, color=".2", style="Condition", s=20)
+ax = sns.scatterplot(x=x, y= y, data=dfTrsv, color=".2", style="Condition", s=20, legend=False)
+ax = sns.scatterplot(x=x, y= y2, data=dfAo, color="m", s=20, legend=False)
 plt.rcParams["font.family"] = "serif"
 
-plt.legend(loc='upper left')
-plt.legend(markerscale=0.7)
-plt.setp(ax.get_legend().get_texts(), fontsize='8') # for legend text
-plt.setp(ax.get_legend().get_title(), fontsize='8') # for legend title
-
 plt.title('Gestational Age vs. Tranverse Aorta Diameter')
-plt.ylabel("Tranverse Aorta Model Diameter (mm)")
+plt.ylabel("Tranverse Aorta Diameter (mm)")
 plt.xlabel("Gestational Age (weeks)")
 
 # Set up grid, legend, and limits
@@ -169,17 +154,13 @@ plt.plot(x, line, color='black', linewidth=0.5)
 plt.plot(x, line+ci, 'k--', linewidth=0.5, )
 plt.fill_between(x, line-ci, line+ci, alpha=0.1)
 
-b = round(b, 3)
-m = round(m, 3)
-b = abs(b)
-plt.text(25,5.25,('y = '+ str(m)+'*x - ' +str(b)), fontsize=8)
+m, b = np.polyfit(x, y2, 1)
+line = m*x + b
+ci = 1.96 * np.std(y)/np.mean(y)
+plt.plot(x, line-ci, 'm--', linewidth=0.5)
+plt.plot(x, line, color='m', linewidth=0.5)
+plt.plot(x, line+ci, 'm--', linewidth=0.5, )
+plt.fill_between(x, line-ci, line+ci, alpha=0.1)
 
-# calculate Pearson's correlation
-corr, _ = pearsonr(x, y)
-corr = round(corr, 3)
-plt.text(25,5.05,('r='+ str(corr)), fontsize=8)
-print('Pearsons correlation: %.3f' % corr)
-
-plt.savefig('figures/GA-Trsv.jpg', bbox_inches='tight')
+plt.savefig('figures/GA-Trsv-Exp.jpg', bbox_inches='tight')
 plt.show()
-
