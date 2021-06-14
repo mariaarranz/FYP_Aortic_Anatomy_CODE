@@ -14,15 +14,15 @@ df = df.drop(columns=['Modeled?', 'Unnamed: 8', 'Name Select', 'Scale'])
 #print(df)
 
 dfAo = pd.read_excel('Data-Results.xlsx', sheet_name='Aortic Root')
-dfAo = dfAo.drop(columns=['Unnamed: 6', 'Name Select'])
+dfAo = dfAo.drop(columns=['Name Select'])
 #print(dfAo)
 
 dfAsc = pd.read_excel('Data-Results.xlsx', sheet_name='Ascending Aorta')
-dfAsc = dfAsc.drop(columns=['Unnamed: 6', 'Name Select'])
+dfAsc = dfAsc.drop(columns=['Name Select'])
 #print(dfAsc)
 
 dfTrsv = pd.read_excel('Data-Results.xlsx', sheet_name='Tranverse Aorta')
-dfTrsv = dfTrsv.drop(columns=['Unnamed: 6', 'Name Select'])
+dfTrsv = dfTrsv.drop(columns=['Name Select'])
 #print(dfTrsv)
 
 ###########################################################################################################
@@ -34,8 +34,7 @@ y2 = dfAo['Exp. Ao. Root (mm)']
 
 plt.figure(1, figsize=(6, 5))
 
-ax = sns.scatterplot(x=x, y= y, data=dfAo, color=".2", style="Condition", s=20, legend=False)
-ax = sns.scatterplot(x=x, y= y2, data=dfAo, color="m", s=20, legend=False)
+ax = sns.scatterplot(x=x, y= y, data=dfAo, color="k", style="Condition", s=10, legend=False)
 plt.rcParams["font.family"] = "serif"
 
 plt.title('Gestational Age vs. Aortic Root Diameter')
@@ -56,22 +55,17 @@ for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 m, b = np.polyfit(x, y, 1)
 line = m*x + b
 ci = 1.96 * np.std(y)/np.mean(y)
-plt.plot(x, line-ci, 'k--', linewidth=0.5)
 plt.plot(x, line, color='black', linewidth=0.5)
-plt.plot(x, line+ci, 'k--', linewidth=0.5, )
-plt.fill_between(x, line-ci, line+ci, alpha=0.1)
+plt.fill_between(x, line-ci, line+ci, alpha=0.2)
 
 m, b = np.polyfit(x, y2, 1)
 line = m*x + b
 ci = 1.96 * np.std(y)/np.mean(y)
-plt.plot(x, line-ci, 'm--', linewidth=0.5)
 plt.plot(x, line, color='m', linewidth=0.5)
-plt.plot(x, line+ci, 'm--', linewidth=0.5, )
-plt.fill_between(x, line-ci, line+ci, alpha=0.1)
+plt.fill_between(x, line-ci, line+ci, alpha=0.2)
 
 plt.savefig('figures/GA-Ao-ExpAo.jpg', bbox_inches='tight')
 plt.show()
-
 
 ###########################################################################################################
 # ASCENDING AORTA RESULTS
@@ -81,8 +75,7 @@ y = dfAsc['Asc. Ao. (mm)']
 y2 = dfAsc['Exp. Asc. Ao. (mm)']
 
 plt.figure(2, figsize=(6, 5))
-ax = sns.scatterplot(x=x, y= y, data=dfAsc, color=".2", style="Condition", s=20, legend=False)
-ax = sns.scatterplot(x=x, y= y2, data=dfAo, color="m", s=20, legend=False)
+ax = sns.scatterplot(x=x, y= y, data=dfAsc, color="k", style="Condition", s=10, legend=False)
 plt.rcParams["font.family"] = "serif"
 
 plt.title('Gestational Age vs. Ascending Aorta Diameter')
@@ -103,18 +96,14 @@ for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 m, b = np.polyfit(x, y, 1)
 line = m*x + b
 ci = 1.96 * np.std(y)/np.mean(y)
-plt.plot(x, line-ci, 'k--', linewidth=0.5)
 plt.plot(x, line, color='black', linewidth=0.5)
-plt.plot(x, line+ci, 'k--', linewidth=0.5, )
-plt.fill_between(x, line-ci, line+ci, alpha=0.1)
+plt.fill_between(x, line-ci, line+ci, alpha=0.2)
 
 m, b = np.polyfit(x, y2, 1)
 line = m*x + b
 ci = 1.96 * np.std(y)/np.mean(y)
-plt.plot(x, line-ci, 'm--', linewidth=0.5)
 plt.plot(x, line, color='m', linewidth=0.5)
-plt.plot(x, line+ci, 'm--', linewidth=0.5, )
-plt.fill_between(x, line-ci, line+ci, alpha=0.1)
+plt.fill_between(x, line-ci, line+ci, alpha=0.2)
 
 plt.savefig('figures/GA-Asc-Exp.jpg', bbox_inches='tight')
 plt.show()
@@ -127,8 +116,7 @@ y = dfTrsv['Transv. Ao. (mm)']
 y2 = dfTrsv['Exp. Transv. Ao. (mm)']
 
 plt.figure(3, figsize=(6, 5))
-ax = sns.scatterplot(x=x, y= y, data=dfTrsv, color=".2", style="Condition", s=20, legend=False)
-ax = sns.scatterplot(x=x, y= y2, data=dfAo, color="m", s=20, legend=False)
+ax = sns.scatterplot(x=x, y= y, data=dfTrsv, color="k", style="Condition", s=10, legend=False)
 plt.rcParams["font.family"] = "serif"
 
 plt.title('Gestational Age vs. Tranverse Aorta Diameter')
@@ -149,18 +137,14 @@ for label in (ax.get_xticklabels() + ax.get_yticklabels()):
 m, b = np.polyfit(x, y, 1)
 line = m*x + b
 ci = 1.96 * np.std(y)/np.mean(y)
-plt.plot(x, line-ci, 'k--', linewidth=0.5)
 plt.plot(x, line, color='black', linewidth=0.5)
-plt.plot(x, line+ci, 'k--', linewidth=0.5, )
-plt.fill_between(x, line-ci, line+ci, alpha=0.1)
+plt.fill_between(x, line-ci, line+ci, alpha=0.2)
 
 m, b = np.polyfit(x, y2, 1)
 line = m*x + b
 ci = 1.96 * np.std(y)/np.mean(y)
-plt.plot(x, line-ci, 'm--', linewidth=0.5)
 plt.plot(x, line, color='m', linewidth=0.5)
-plt.plot(x, line+ci, 'm--', linewidth=0.5, )
-plt.fill_between(x, line-ci, line+ci, alpha=0.1)
+plt.fill_between(x, line-ci, line+ci, alpha=0.2)
 
 plt.savefig('figures/GA-Trsv-Exp.jpg', bbox_inches='tight')
 plt.show()

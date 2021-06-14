@@ -16,15 +16,15 @@ df = df.drop(columns=['Modeled?', 'Unnamed: 8', 'Name Select', 'Scale'])
 #print(df)
 
 dfAo = pd.read_excel('Data-Results.xlsx', sheet_name='Aortic Root')
-dfAo = dfAo.drop(columns=['Unnamed: 6', 'Name Select'])
+dfAo = dfAo.drop(columns=['Name Select'])
 #print(dfAo)
 
 dfAsc = pd.read_excel('Data-Results.xlsx', sheet_name='Ascending Aorta')
-dfAsc = dfAsc.drop(columns=['Unnamed: 6', 'Name Select'])
+dfAsc = dfAsc.drop(columns=['Name Select'])
 #print(dfAsc)
 
 dfTrsv = pd.read_excel('Data-Results.xlsx', sheet_name='Tranverse Aorta')
-dfTrsv = dfTrsv.drop(columns=['Unnamed: 6', 'Name Select'])
+dfTrsv = dfTrsv.drop(columns=['Name Select'])
 #print(dfTrsv)
 
 ###########################################################################################################
@@ -173,6 +173,7 @@ values = ao_values + asc_values + trsv_values
 data = pd.melt(cdf, id_vars=['Type'], value_vars= values)
 #print(data)    
 
+'''
 plt.figure(1, figsize=(6, 5))
 plt.rcParams["font.family"] = "serif"
 
@@ -197,4 +198,4 @@ bplot.set_yticks(np.arange(2, 8.5, 0.5))  # adjust the y tick frequency
 
 plt.savefig('figures/measurements_boxplot.jpg', bbox_inches='tight')
 plt.show()
-
+'''
